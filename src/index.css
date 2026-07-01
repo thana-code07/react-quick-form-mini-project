@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Kanit", system-ui, "Segoe UI", Roboto, sans-serif;
+  --color-survey-page: #eff3f6;
+  --color-survey-card: #ffffff;
+  --color-survey-gradient-start: #9c27b0;
+  --color-survey-gradient-end: #673ab7;
+  --color-survey-border: #e0e0e0;
+  --color-survey-border-error: #d32f2f;
+  --color-survey-text-primary: #212121;
+  --color-survey-text-secondary: #757575;
+  --color-survey-error: #d32f2f;
+  --color-survey-success-bg: #f0f9f0;
+  --color-survey-success-border: #dcf0dc;
+  --color-survey-success-text: #1b5e20;
+  --color-survey-accent-purple: #7b1fa2;
+  --color-survey-btn-dark: #1a1a1a;
+  --radius-survey-card: 12px;
+  --radius-survey-input: 8px;
+  --shadow-survey-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -13,15 +34,33 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --survey-page-bg: #eff3f6;
+  --survey-card-bg: #ffffff;
+  --survey-gradient-start: #9c27b0;
+  --survey-gradient-end: #673ab7;
+  --survey-border: #e0e0e0;
+  --survey-border-error: #d32f2f;
+  --survey-text-primary: #212121;
+  --survey-text-secondary: #757575;
+  --survey-error: #d32f2f;
+  --survey-success-bg: #f0f9f0;
+  --survey-success-border: #dcf0dc;
+  --survey-success-text: #1b5e20;
+  --survey-accent-purple: #7b1fa2;
+  --survey-btn-dark: #1a1a1a;
+  --survey-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --survey-radius-card: 12px;
+  --survey-radius-input: 8px;
+
+  --sans: "Kanit", system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: "Kanit", system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  color-scheme: light;
+  color: var(--survey-text-primary);
+  background: var(--survey-page-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -32,39 +71,20 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
 body {
   margin: 0;
+  font-family: var(--sans);
+  background: var(--survey-page-bg);
+}
+
+input[type="radio"] {
+  accent-color: var(--survey-gradient-end);
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
+  width: 100%;
   min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -72,7 +92,6 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
 }
 
 h1 {
