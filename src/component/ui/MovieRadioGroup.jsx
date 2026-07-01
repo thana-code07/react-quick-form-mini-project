@@ -1,17 +1,14 @@
 import { movies } from "../../constants/movieInfo";
+import FieldLabel from "./FieldLabel";
 import RadioButton from "./RadioButton";
-import FormError, { errorBorderClass } from "./FormError";
-
-function formatMovieLabel({ title, year, director }) {
-  return `${title}(${year}) Director: ${director}`;
-}
+import FormError, { fieldBorderClass } from "./FormError";
 
 export default function MovieRadioGroup({ value, onChange, error }) {
   return (
-    <div className="flex flex-col items-start gap-2 w-full">
-      <p>เลือกหนังที่คุณชอบ</p>
+    <div className="flex w-full flex-col items-start gap-2">
+      <FieldLabel required>เลือกหนังที่คุณชอบ</FieldLabel>
       <div
-        className={`flex flex-col items-start gap-2 w-full ${errorBorderClass(error)} rounded-md`}
+        className={`flex w-full flex-col gap-1 rounded-survey-input border p-3 ${fieldBorderClass(error)}`}
       >
         {movies.map((movie) => (
           <RadioButton
@@ -19,7 +16,9 @@ export default function MovieRadioGroup({ value, onChange, error }) {
             id={movie.title}
             name="movie"
             value={movie.title}
-            label={formatMovieLabel(movie)}
+            title={movie.title}
+            year={movie.year}
+            director={movie.director}
             checked={value === movie.title}
             onChange={onChange}
           />

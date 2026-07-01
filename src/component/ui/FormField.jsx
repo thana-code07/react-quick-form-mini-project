@@ -1,4 +1,9 @@
-import FormError, { errorBorderClass } from "./FormError";
+import FieldLabel from "./FieldLabel";
+import FormError, {
+  fieldBorderClass,
+  fieldFocusClass,
+  inputBaseClass,
+} from "./FormError";
 
 export default function FormField({
   label,
@@ -8,16 +13,19 @@ export default function FormField({
   onChange,
   error,
   placeholder,
+  required = false,
 }) {
   return (
-    <div className="flex flex-col items-start gap-2 w-full">
-      <label htmlFor={id}>{label}</label>
+    <div className="flex w-full flex-col items-start gap-2">
+      <FieldLabel htmlFor={id} required={required}>
+        {label}
+      </FieldLabel>
       <input
         type={type}
         id={id}
         value={value}
         onChange={onChange}
-        className={`w-full p-2 border ${errorBorderClass(error)} rounded-md`}
+        className={`${inputBaseClass} ${fieldBorderClass(error)} ${fieldFocusClass(error)}`}
         placeholder={placeholder}
       />
       <FormError message={error} />

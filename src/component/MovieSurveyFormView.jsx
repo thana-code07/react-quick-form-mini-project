@@ -2,6 +2,7 @@ import Button from "./ui/Button";
 import FormField from "./ui/FormField";
 import TextAreaField from "./ui/TextAreaField";
 import MovieRadioGroup from "./ui/MovieRadioGroup";
+import { ResetIcon, SendIcon } from "./ui/icons";
 
 export default function MovieSurveyFormView({
   data,
@@ -15,7 +16,7 @@ export default function MovieSurveyFormView({
 
   return (
     <form
-      className="flex flex-col gap-6 items-start w-full max-w-md"
+      className="flex w-full flex-col items-start gap-5"
       onSubmit={onSubmit}
     >
       <FormField
@@ -25,6 +26,7 @@ export default function MovieSurveyFormView({
         onChange={(e) => onFieldChange("name", e.target.value)}
         error={nameError}
         placeholder="กรุณากรอกชื่อของคุณ"
+        required
       />
       <FormField
         label="อีเมล"
@@ -34,6 +36,7 @@ export default function MovieSurveyFormView({
         onChange={(e) => onFieldChange("email", e.target.value)}
         error={emailError}
         placeholder="example@example.com"
+        required
       />
       <MovieRadioGroup
         value={movie}
@@ -47,11 +50,16 @@ export default function MovieSurveyFormView({
         onChange={(e) => onFieldChange("comment", e.target.value)}
         placeholder="กรุณากรอกความคิดเห็นของคุณ"
       />
-      <div className="flex justify-between w-full">
-        <Button variant="secondary" type="button" onClick={onReset}>
-          reset
+      <div className="mt-2 flex w-full justify-between border-t border-survey-border pt-4">
+        <Button
+          variant="secondary"
+          type="button"
+          icon={<ResetIcon />}
+          onClick={onReset}
+        >
+          รีเซ็ต
         </Button>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" icon={<SendIcon />}>
           ส่งแบบสำรวจ
         </Button>
       </div>
