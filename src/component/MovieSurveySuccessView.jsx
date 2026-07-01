@@ -1,5 +1,8 @@
-export default function MovieSurveySubmitted(props) {
-  const { name, email, movie, comment, onClick } = props;
+import Button from "./ui/Button";
+
+export default function MovieSurveySuccessView({ data, onReset }) {
+  const { name, email, movie, comment } = data;
+
   return (
     <>
       <div>
@@ -13,13 +16,9 @@ export default function MovieSurveySubmitted(props) {
           <p>ความคิดเห็น: {comment}</p>
         </div>
       </div>
-      <button
-        type="button"
-        className="bg-purple-500 text-white p-2 rounded-md"
-        onClick={onClick}
-      >
+      <Button variant="primary" type="button" onClick={onReset}>
         ทำแบบสำรวจใหม่
-      </button>
+      </Button>
     </>
   );
 }
